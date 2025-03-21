@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         if ( _isGround ) {
             GetComponent<Rigidbody2D>().linearVelocity = new Vector3( 0, JumpPower, 0 );
             _isGround = false;
+            GetComponent<Animator>().SetBool( "Jump", true );
             Snow.Stop();
         }
     }
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
     {
         if( Coll.gameObject.tag == "Ground" ) {
             _isGround = true;
+            GetComponent<Animator>().SetBool( "Jump", false );
             Snow.Play();
         }
 
